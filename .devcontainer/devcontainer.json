@@ -1,0 +1,42 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
+{
+  "name": "Node.js & TypeScript",
+  // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+  "build": { "dockerfile": "Dockerfile.dev" },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "akamud.vscode-theme-onedark",
+        "ms-vscode-remote.remote-containers",
+        "dsznajder.es7-react-js-snippets",
+        "PKief.material-icon-theme",
+        "ms-vscode-remote.remote-wsl",
+        "dbaeumer.vscode-eslint",
+        "ms-vscode.vscode-typescript-next",
+        "esbenp.prettier-vscode",
+        "Prisma.prisma",
+        "unifiedjs.vscode-mdx"
+      ]
+    }
+  },
+
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  // "features": {},
+
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  "forwardPorts": [3000],
+
+  // Use 'postCreateCommand' to run commands after the container is created.
+  // "postCreateCommand": "yarn install",
+
+  // Configure tool-specific properties.
+  // "customizations": {},
+
+  // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+  "remoteUser": "root",
+  "mounts": [
+    "source=vscode-extensions,target=/root/.vscode-server/extensions,type=volume"
+  ],
+  "runArgs": ["--network=host"]
+}

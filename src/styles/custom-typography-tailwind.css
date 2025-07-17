@@ -1,0 +1,111 @@
+/* custom classes */
+@utility link {
+  @apply text-primary no-underline underline-offset-4 hover:underline;
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  .custom-prose {
+    h1 {
+      @apply border-primary bg-primary/10 text-foreground mb-2 scroll-m-20 rounded-lg rounded-tl-xl border-2 border-l-8 p-2 text-xl font-extrabold tracking-tight lg:text-2xl;
+    }
+
+    h2 {
+      @apply border-destructive bg-primary/10 text-foreground mb-2 scroll-m-20 rounded-lg rounded-tl-xl border-2 border-l-8 p-2 text-lg font-semibold tracking-tight first:mt-0;
+    }
+
+    h3 {
+      @apply mb-2 scroll-m-20 rounded-tl-xl text-base font-semibold tracking-tight;
+    }
+
+    h4 {
+      @apply mb-2 scroll-m-20 rounded-tl-xl text-base font-semibold tracking-tight;
+    }
+
+    p {
+      @apply mb-2 rounded-tl-xl leading-7;
+    }
+
+    main a,
+    aside a {
+      @apply link;
+    }
+
+    blockquote {
+      @apply mt-6 border-l-2 pl-6 italic;
+    }
+
+    table {
+      @apply mb-2 w-full;
+    }
+
+    tr {
+      @apply even:bg-muted m-0 border-t p-0;
+    }
+
+    th {
+      @apply border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right;
+    }
+
+    td {
+      @apply border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right;
+    }
+
+    ul {
+      @apply mb-2 ml-6 list-disc [&>li]:mt-2;
+    }
+
+    code {
+      @apply bg-muted relative mb-2 rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
+    }
+
+    small {
+      @apply text-sm leading-none font-medium;
+    }
+
+    pre {
+      @apply font-sans;
+    }
+
+    input {
+      @apply font-sans;
+    }
+
+    button {
+      @apply font-sans;
+    }
+  }
+}
+
+@layer components {
+  .custom-prose-admin {
+    h1 {
+      @apply border-primary bg-primary/10 text-foreground mb-2 scroll-m-20 rounded-lg rounded-tl-xl border-2 border-l-8 p-2 text-xl font-extrabold tracking-tight lg:text-2xl;
+    }
+
+    h2 {
+      @apply border-destructive bg-primary/10 text-foreground mb-2 scroll-m-20 rounded-lg rounded-tl-xl border-2 border-l-8 p-2 text-lg font-semibold tracking-tight first:mt-0;
+    }
+
+    h3 {
+      @apply mb-2 scroll-m-20 rounded-tl-xl text-base font-semibold tracking-tight;
+    }
+
+    h4 {
+      @apply mb-2 scroll-m-20 rounded-tl-xl text-base font-semibold tracking-tight;
+    }
+
+    ul {
+      @apply mb-2 ml-6 list-disc [&>li]:mt-2;
+    }
+    a {
+      @apply link;
+    }
+  }
+}
