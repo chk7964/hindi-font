@@ -20,7 +20,7 @@ export default function ErrorComponent({ reset }: { reset: () => void }) {
             <RefreshCcw size={20} className="mr-2" />
             Try again
           </Button>
-          <Button asChild className="text-foreground! cursor-pointer">
+          <Button asChild className="cursor-pointer">
             <Link href="/">
               <Home size={20} /> Home
             </Link>

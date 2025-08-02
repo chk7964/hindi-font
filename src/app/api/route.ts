@@ -10,7 +10,7 @@ export async function GET() {
     return NextResponse.json<apiResponse>({
       success: true,
       data: null,
-      message: null,
+      message: "Something Is Wrong",
     });
   } catch (error) {
     console.error(error);

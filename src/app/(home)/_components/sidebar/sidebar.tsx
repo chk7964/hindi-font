@@ -12,12 +12,22 @@ import SidebarAds from "@/components/ads/sidebar-ads";
 
 import type { apiResponse } from "@/types/api-response";
 import { Button } from "@/components/ui/button";
+import { env } from "@/config/env";
 
 export default async function Sidebar() {
+  const res = await fetch(
+    `${env.NEXT_PUBLIC_SITE_URL}/api/font/most-downloaded-font`,
+    {
+      cache: "no-store",
+    }
+  );
+  const response = await res.json();
+  const { data }: any = response;
+
   return (
     <>
       <section>
-        <h3>Most Rated Font</h3>
+        <h3>Most Downloaded Font</h3>
         <Ui />
       </section>
     </>
@@ -28,7 +38,7 @@ function Ui() {
   const rating = 2.5; // example rating, can come from props or state
   const totalStars = 5;
 
-  // Generate an array to represent stars
+  // Genera`te an array to represent stars
   const stars = [];
   for (let i = 1; i <= totalStars; i++) {
     if (i <= Math.floor(rating)) {
@@ -72,7 +82,7 @@ function Ui() {
               return <Star key={index} className="h-4 w-4 text-gray-300" />;
             })}
           </div>
-          <Button
+          {/* <Button
             className="bg-green-600 text-white hover:bg-green-700 hover:no-underline"
             asChild
           >
@@ -80,7 +90,7 @@ function Ui() {
               <Download className="mr-2 h-4 w-4" />
               Download
             </Link>
-          </Button>
+          </Button> */}
         </div>
       </div>
     </Card>

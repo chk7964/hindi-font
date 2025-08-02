@@ -4,12 +4,16 @@ import {
   type DynamicRouteSegmentConfig,
 } from "@/types/api-response";
 import { NextResponse } from "next/server";
+import { prisma } from "@/lib/prisma";
 
 export async function GET() {
   try {
+    const files = await prisma.file.count();
+    const posts = await prisma.post.count();
+    const category = await prisma.category.count();
     return NextResponse.json<apiResponse>({
       success: true,
-      data: null,
+      data: { files, posts, category },
       message: null,
     });
   } catch (error) {

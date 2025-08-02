@@ -14,11 +14,50 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model File {
-  id         String   @id @default(cuid())
-  filename   String
-  mimetype   String
-  size       Int
-  url        String // Public or internal URL to access the file
-  uploadedAt DateTime @default(now())
+model file {
+  id             String    @id @default(cuid())
+  filename       String    @unique()
+  mimetype       String
+  size           Int
+  uploaded_at    DateTime  @default(now())
+  download_count Int       @default(0)
+  post_id        Int?
+  category_id    Int?
+  post           post?     @relation(fields: [post_id], references: [id])
+  category       category? @relation(fields: [category_id], references: [id])
+}
+
+model post {
+  id          Int       @id @default(autoincrement())
+  title       String
+  content     String
+  status      Boolean   @default(false)
+  slug        String    @unique()
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
+  files       file[]
+  category_id Int?
+  category    category? @relation(fields: [category_id], references: [id])
+}
+
+model category {
+  id    Int    @id @default(autoincrement())
+  name  String @unique()
+  slug  String @unique()
+  posts post[]
+  files file[]
+}
+
+enum UserRole {
+  ADMIN
+  USER
+}
+
+model users {
+  id       Int      @id @unique @default(autoincrement())
+  email    String   @unique()
+  username String   @unique()
+  password String?
+  role     UserRole @default(USER)
+  status   Boolean  @default(false)
 }

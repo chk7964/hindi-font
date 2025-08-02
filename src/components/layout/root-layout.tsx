@@ -2,7 +2,7 @@ import React, { type ReactNode } from "react";
 import NextTopLoader from "nextjs-toploader";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { Toaster } from "@/components/ui/sonner";
-// import NextAuthProvider from "@/context/auth-provider";
+ import NextAuthProvider from "@/context/auth-provider";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { ThemeProvider } from "@/context/theme-provider";
 
@@ -13,7 +13,7 @@ export default function RootLayout({
 }>) {
   return (
     <div className="">
-      {/* <NextAuthProvider> */}
+      <NextAuthProvider>
       <ThemeProvider
         attribute="class"
         defaultTheme="system"
@@ -40,7 +40,7 @@ export default function RootLayout({
         <NuqsAdapter>{children}</NuqsAdapter>
         <ScrollToTop />
       </ThemeProvider>
-      {/* </NextAuthProvider> */}
+      </NextAuthProvider>
     </div>
   );
 }

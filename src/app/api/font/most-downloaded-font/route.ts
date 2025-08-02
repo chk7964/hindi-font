@@ -4,12 +4,24 @@ import {
   type DynamicRouteSegmentConfig,
 } from "@/types/api-response";
 import { NextResponse } from "next/server";
+import { prisma } from "@/lib/prisma";
 
 export async function GET() {
   try {
+    const most_downloaded_font = await prisma.file.findMany({
+      where: {
+        post: {
+          status: true,
+        },
+      },
+      orderBy: {
+        download_count: "desc",
+      },
+    });
+
     return NextResponse.json<apiResponse>({
       success: true,
-      data: null,
+      data: most_downloaded_font,
       message: null,
     });
   } catch (error) {
